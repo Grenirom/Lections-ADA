@@ -353,3 +353,58 @@ ALTER TABLE blogger DROP COLUMN age;
 
 ALTER TABLE name_of_table ADD CONSTRAINT constr_name constraint;
 -- добавление ограничения на поле
+
+IMPORT / EXPORT БАЗ ДАННЫХ
+--IMPORT
+--Инструкция по скачиванию базы данных shakespeare(Для дом. задания) и ее импорту--
+1) скачиваете файл "shakespeare.sql" с ТГ
+2) сохраняете файл в любую папку на вашем ноутбуке (Desktop, или в папку со всеми нашими лекциями)
+3) в терминале заходите в оболочку postgres командой psql
+4) создаете базу данных: 
+    CREATE DATABASE shakespeare;
+5) \q -- чтобы выйти из оболочки postgresql
+6) В ТЕРМИНАЛЕ (не в оболочке postgresql) пишите команду: psql shakespeare < file.sql
+# shakespeare должна существовать в postgresql
+7) после выполнения этой команды у вас в терминале отобразятся команды:
+SET
+SET
+SET
+SET
+SET
+SET
+CREATE EXTENSION
+COMMENT
+SET
+SET
+SET
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+COPY 945
+COPY 1266
+COPY 1346
+COPY 35465
+COPY 28830
+COPY 43
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+REVOKE
+GRANT
+GRANT
+--ЭТИ КОМАНДЫ ОЗНАЧАЮТ ЧТО ИМПОРТ БАЗЫ ДАННЫХ С ФАЙЛА SHAKESPEARE.SQL ПРОШЕЛ УСПЕШНО, МОЖЕТЕ ЗАХОДИТЬ В ОБОЛОЧКУ POSTGRESQL И РАБОТАТЬ
+
+--EXPORT
+pg_dump db_name > file.sql
