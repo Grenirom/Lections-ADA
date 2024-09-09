@@ -39,3 +39,93 @@ CREATE TABLE account (
 
 
 DROP TABLE account; -- команда для удаления таблицы
+
+
+ТИПЫ ДАННЫХ POSTGRESQL:
+Строковые: 
+TEXT - строковый тип данных, не имеющий ограничения
+VARCHAR(20) - строковый тип данных, имеет ограничение(указанное в скобках), переменная длина
+CHAR(20) - Строковый тип данных, с ограничем, длина статичная
+
+Числовые:
+SERIAL - числовой тип данных, имеющий автоинкремент
+INT - числовой тип данных, ограниченный диапозон значений (от -2млрд до +2млрд)
+SMALLINT - числовой тип данных, имеющий боллее маленький диапозон чисел (от -30тыс до +30тыс)
+BIGINT - числовой тип данных, который имеет самый большой диапозон чисел
+
+Булевый тип данных:
+bool - Булевый тип данных (True, False, true, false, yes, no, y, n, 0, 1)
+
+Дата/время:
+DATE - тип данных для дат (yyyy-mm-dd)
+TIME - тип данных для времени(hh:mi/ hh:mi:ss)
+
+json - хранит данные json в текстовом виде
+
+
+ЗАПОЛЕНЕНИЕ ТАБЛИЦ:
+INSERT INTO test_table (name, last_name, email) VALUES
+('nikita', 'grebnev', 'nikitagrebnev@gmail.com'),
+('nikita', 'grebnev', 'nikitagrebnev@gmail.com'),
+('nikita', 'grebnev', 'nikitagrebnev@gmail.com'),
+('nikita', 'grebnev', 'nikitagrebnev@gmail.com'),
+('nikita', 'grebnev', 'nikitagrebnev@gmail.com');
+
+УДАЛЕНИЕ ЗАПИСЕЙ ИЗ ТАБЛИЦЫ:
+DELETE FROM test_table;
+-- Эта команда удалит абсолютно все записи из таблицы
+
+-- Команда для удаления определенной записи по заданному условию
+DELETE FROM test_table WHERE id=1;
+
+
+ОБНОВЛЕНИЕ ЗАПИСЕЙ В ТАБЛИЦЕ:
+UPDATE test_table SET name='igor';
+-- Обновление всех записей в указанной таблице
+
+UPDATE test_table SET name='igor' WHERE id<10;
+-- Обновит поле name на igor у всех пользователей, id которых меньше 10
+
+ВЫБОРКА ДАННЫХ ИЗ ТАБЛИЦ:
+SELECT * FROM test_table;
+-- Вытащит из таблицы абсолютно все данные со всеми полями
+
+SELECT email, password FROM test_table;
+-- Вытащит все записи, но только по полям email и password
+
+УСЛОВИЯ:
+1) WHERE
+    DELETE FROM test_table WHERE id<5;
+    --удаляет все записи из таблицы, id которых меньше 5
+
+2) like
+    SELECT * FROM test_table WHERE city like '%bishkek%';
+    -- Выбирает все записи у которых в поле city название содержит слово 'bishkek'
+    -- like чувствителен к регистру ('Bishkek' - такую запись не воспримет, и не выведет)
+
+3) ilike
+    SELECT * FROM test_table WHERE city ilike '%bishkek%';
+    -- Выбирает все записи у которых в поле city название содержит слово 'bishkek'
+    -- ilike не чувствителен к регистру ('BISHKEK' - такую запись воспримет, и выведет)
+    
+4) ORDER BY <column>
+    4.1 SELECT * FROM users ORDER BY id;
+    -- сортировка записей таблицы users по полю id
+    -- сортировка идет ПО ВОЗРАСТАНИЮ (ASC)
+
+    4.2 SELECT * FROM users ORDER BY id DESC;
+    -- сортировка записей таблицы users по полю id
+    -- сортировка идет ПО УБЫВАНИЮ (DESC)
+
+5) LIMIT <num>
+    SELECT * FROM test_table LIMIT 10;
+    -- выводит только первые 10 записей из таблицы
+
+6) OFFSET <num>
+    SELECT * FROM test_table OFFSET 10;
+    -- пропускает первые 10 записей, и выводит все остальные
+
+7) LIMIT <num> OFFSET <num>
+    SELECT * FROM test_table LIMIT 20 OFFSET 10;
+    -- 1) пропускает 10 записей
+    -- 2) выбирает следующие 20 записей
